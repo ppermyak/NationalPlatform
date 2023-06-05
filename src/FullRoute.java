@@ -49,6 +49,7 @@ public class FullRoute {
         for (Map.Entry<String, List<Integer>> map : mapQtyRoutes.entrySet()) {
             if (map.getValue().get(0) == 0) {
                 start = map.getKey();
+                break;
             }
         }
     }
@@ -57,6 +58,7 @@ public class FullRoute {
         for (Map.Entry<String, List<Integer>> map : mapQtyRoutes.entrySet()) {
             if (map.getValue().get(1) == 0) {
                 finish = map.getKey();
+                break;
             }
         }
     }
