@@ -81,11 +81,11 @@ public class FullRoute {
             visited[i] = false;
 
         for (int i = 0; i < listRoutes.size(); i++) {
-            if (!this.track.equals(""))
-                break;
             if (!visited[i]) {
                 visited[i] = true;
                 searchRoute(listRoutes.get(i), track + " " + listRoutes.get(i), qtyVisited + 1);
+                if (!this.track.equals(""))
+                    break;
             }
         }
     }
