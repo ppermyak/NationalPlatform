@@ -9,6 +9,7 @@ public class FullRoute {
     private final Map<String, List<String>> mapRoutes = new HashMap<>();
     private String start;
     private String finish;
+    private String track = "";
 
     void fillMapRoutes(String cityFrom, String cityTo) {
         List<String> listRoutes;
@@ -67,7 +68,7 @@ public class FullRoute {
         List<String> listRoutes = mapRoutes.get(currCity);
 
         if (qtyVisited == qtyCities && currCity.equals(finish)) {
-            System.out.println(track);
+            this.track = track;
             return;
         }
 
@@ -80,6 +81,8 @@ public class FullRoute {
             visited[i] = false;
 
         for (int i = 0; i < listRoutes.size(); i++) {
+            if (!this.track.equals(""))
+                break;
             if (!visited[i]) {
                 visited[i] = true;
                 searchRoute(listRoutes.get(i), track + " " + listRoutes.get(i), qtyVisited + 1);
@@ -104,5 +107,6 @@ public class FullRoute {
         fullRoute.findStartCity();
         fullRoute.findFinishCity();
         fullRoute.searchRoute(fullRoute.start, fullRoute.start, 1);
+        System.out.println(fullRoute.track);
     }
 }
